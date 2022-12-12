@@ -102,12 +102,12 @@ var flag = true;
 const autoPlay = document.querySelector('.autoplay');
 const stopAutoPlay = document.querySelector('.stop');
 
-const stoppaTutto = setInterval(autoCarousel, 3000);
+let stoppaTutto = setInterval(autoCarousel, 3000);
 
 autoPlay.addEventListener('click', function(){
     
     if(flag == false){
-    setInterval(autoCarousel, 3000);
+    stoppaTutto = setInterval(autoCarousel, 3000);
     flag = true;
     }
 
@@ -115,27 +115,20 @@ autoPlay.addEventListener('click', function(){
 
 stopAutoPlay.addEventListener('click', function(){
     
-    if(flag == true){
     clearInterval(stoppaTutto);
     flag = false;
-    }
 
 });
 
 itemsSlider.addEventListener('mouseenter', function() {
 
-    if(flag == true){
     clearInterval(stoppaTutto);
-    flag = false;
-    }
 
 });
 
 itemsSlider.addEventListener('mouseleave', function() {
 
-    if(flag == false){
-    setInterval(autoCarousel, 3000);
-    flag = true;
-    }
+    stoppaTutto = setInterval(autoCarousel, 3000);
+    flag = false;
 
 });
